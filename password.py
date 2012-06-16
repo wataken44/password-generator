@@ -45,8 +45,15 @@ def main():
     for o,a in opts:
         if o == 'l':
             length = int(a)
+
+    if len(args) == 0:
+        print('key required')
+        sys.exit(1)
     
-    key = args[0]
+    sys.stdout.write('enter secret: ')
+    sys.stdout.flush()
+    secret = sys.stdin.readline()
+    key = args[0] + secret
 
     generator = UniformGenerator(key) 
     
